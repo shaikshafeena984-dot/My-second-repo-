@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2f4f4f;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #555;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #4CAF50;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 30%;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .card .value {
+            font-size: 24px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container input,
+        .form-container button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cards {
+                flex-direction: column;
+            }
+
+            .card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Health Dashboard</h1>
+    </div>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Navigation</h2>
+            <a href="#">Home</a>
+            <a href="#">Health Data</a>
+            <a href="#">Reports</a>
+            <a href="#">Settings</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="cards">
+                <div class="card">
+                    <h3>Steps Today</h3>
+                    <p class="value" id="steps-value">0</p>
+                </div>
+                <div class="card">
+                    <h3>Calories Burned</h3>
+                    <p class="value" id="calories-value">0</p>
+                </div>
+                <div class="card">
+                    <h3>Heart Rate</h3>
+                    <p class="value" id="heart-rate-value">70</p>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <h3>Submit Health Data</h3>
+                <input type="number" id="steps" placeholder="Enter steps">
+                <input type="number" id="calories" placeholder="Enter calories burned">
+                <input type="number" id="heart-rate" placeholder="Enter heart rate">
+                <button onclick="updateDashboard()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to update health data on dashboard
+        function updateDashboard() {
+            const steps = document.getElementById("steps").value;
+            const calories = document.getElementById("calories").value;
+            const heartRate = document.getElementById("heart-rate").value;
+
+            if (steps) document.getElementById("steps-value").innerText = steps;
+            if (calories) document.getElementById("calories-value").innerText = calories;
+            if (heartRate) document.getElementById("heart-rate-value").innerText = heartRate;
+
+            // Clear the input fields after submission
+            document.getElementById("steps").value = '';
+            document.getElementById("calories").value = '';
+            document.getElementById("heart-rate").value = '';
+        }
+    </script>
+</body>
+
+</html>
